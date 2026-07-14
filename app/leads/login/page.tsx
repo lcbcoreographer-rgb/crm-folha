@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Loader2, Lock } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function LeadsLoginPage() {
   const router = useRouter();
@@ -36,9 +37,13 @@ export default function LeadsLoginPage() {
         onSubmit={handleSubmit}
         className="w-full max-w-sm rounded-2xl border border-forest-900/10 bg-white p-8 shadow-lg"
       >
-        <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-forest-50 text-forest-700">
-          <Lock size={22} />
-        </div>
+        <Image
+          src="/logo.png"
+          alt="Folha Soluções Ambientais"
+          width={56}
+          height={56}
+          className="mx-auto mb-5 rounded-xl"
+        />
         <h1 className="text-center text-xl font-extrabold text-forest-900">
           Painel de Leads
         </h1>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
@@ -32,9 +33,7 @@ export default function Sidebar() {
   return (
     <aside className="flex w-60 shrink-0 flex-col border-r border-border bg-white">
       <div className="flex items-center gap-2.5 px-5 py-5">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-forest-700 text-sm font-extrabold text-white">
-          FS
-        </div>
+        <Image src="/logo.png" alt="Folha Soluções Ambientais" width={36} height={36} className="shrink-0 rounded-lg" />
         <div>
           <p className="text-sm font-extrabold leading-tight text-ink">Folha CRM</p>
           <p className="text-[11px] leading-tight text-ink-soft">Soluções Ambientais</p>
