@@ -76,4 +76,5 @@ export interface LeadEvent {
   de_status: string | null;
   para_status: string | null;
   nota: string | null;
+  usuario: string | null;
 }

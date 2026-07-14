@@ -1,22 +1,25 @@
 @import "tailwindcss";
 
 :root {
-  --color-forest-950: #003d00;
-  --color-forest-900: #005c00;
-  --color-forest-800: #008500;
-  --color-forest-700: #00b800;
-  --color-forest-600: #33ff33;
-  --color-forest-100: #e0ffe0;
-  --color-forest-50: #f0fff0;
+  /* Folha Soluções Ambientais — verde institucional */
+  --color-forest-950: #2c4a00;
+  --color-forest-900: #3d6600;
+  --color-forest-800: #4d7f00;
+  --color-forest-700: #5f9f00;
+  --color-forest-600: #7abf1f;
+  --color-forest-100: #e3f0d1;
+  --color-forest-50: #f1f8e8;
 
-  --color-amber-600: #d4611e;
-  --color-amber-500: #e8722c;
-  --color-amber-400: #f08a4b;
+  /* Folha Soluções Ambientais — laranja institucional */
+  --color-amber-600: #d85a16;
+  --color-amber-500: #f26a24;
+  --color-amber-400: #f58a4f;
 
-  --color-ink: #16211c;
-  --color-ink-soft: #4a564f;
-  --color-paper: #fbfaf6;
-  --color-paper-dim: #f2f4ef;
+  --color-ink: #1f2937;
+  --color-ink-soft: #6b7280;
+  --color-paper: #f8f9fa;
+  --color-paper-dim: #f3f4f6;
+  --color-border: #e5e7eb;
 
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -42,6 +45,7 @@
   --color-ink-soft: var(--color-ink-soft);
   --color-paper: var(--color-paper);
   --color-paper-dim: var(--color-paper-dim);
+  --color-border: var(--color-border);
 }
 
 html {

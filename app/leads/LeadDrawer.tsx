@@ -2,7 +2,9 @@
 import { useEffect, useState } from "react";
 import { Loader2, X } from "lucide-react";
 import type { Lead, LeadEvent } from "@/app/lib/leadTypes";
+import type { Usuario } from "@/app/lib/crmTypes";
 import { STATUS_LABELS, CLASSIFICACAO_LABELS, CLASSIFICACAO_BADGE_CLASSES } from "@/app/lib/leadStatus";
+import LeadFiles from "./LeadFiles";
 
 const fieldClass =
   "w-full rounded-lg border border-forest-900/15 bg-white px-3 py-2 text-sm text-ink outline-none transition-colors focus:border-forest-700";
@@ -38,6 +40,7 @@ export default function LeadDrawer({
 }) {
   const [events, setEvents] = useState<LeadEvent[]>([]);
   const [loadingEvents, setLoadingEvents] = useState(true);
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
   const [nota, setNota] = useState("");
   const [savingNota, setSavingNota] = useState(false);
 
@@ -57,6 +60,12 @@ export default function LeadDrawer({
       .then((data) => setEvents(data.events || []))
       .finally(() => setLoadingEvents(false));
   }, [lead.id]);
+
+  useEffect(() => {
+    fetch("/api/leads/usuarios")
+      .then((res) => res.json())
+      .then((data) => setUsuarios((data.usuarios || []).filter((u: Usuario) => u.ativo)));
+  }, []);
 
   async function handleAddNota() {
     if (!nota.trim()) return;
@@ -157,7 +166,21 @@ export default function LeadDrawer({
             <div className="space-y-3">
               <label className="block">
                 <span className="mb-1 block text-xs font-medium text-ink">Responsável</span>
-                <input className={fieldClass} value={responsavel} onChange={(e) => setResponsavel(e.target.value)} />
+                <select
+                  className={fieldClass}
+                  value={responsavel}
+                  onChange={(e) => setResponsavel(e.target.value)}
+                >
+                  <option value="">Selecione</option>
+                  {usuarios.map((u) => (
+                    <option key={u.id} value={u.nome}>
+                      {u.nome}
+                    </option>
+                  ))}
+                  {responsavel && !usuarios.some((u) => u.nome === responsavel) && (
+                    <option value={responsavel}>{responsavel}</option>
+                  )}
+                </select>
               </label>
 
               {lead.status === "em_diagnostico" && (
@@ -228,6 +251,11 @@ export default function LeadDrawer({
           </section>
 
           <section>
+            <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-ink-soft">Arquivos</h3>
+            <LeadFiles leadId={lead.id} />
+          </section>
+
+          <section>
             <h3 className="mb-2 text-xs font-bold uppercase tracking-wide text-ink-soft">Histórico</h3>
             {loadingEvents ? (
               <p className="text-sm text-ink-soft">Carregando...</p>
@@ -238,6 +266,7 @@ export default function LeadDrawer({
                     <p className="text-ink">{eventDescription(event)}</p>
                     <p className="text-[11px] text-ink-soft">
                       {new Date(event.created_at).toLocaleString("pt-BR")}
+                      {event.usuario ? ` · ${event.usuario}` : ""}
                     </p>
                   </li>
                 ))}

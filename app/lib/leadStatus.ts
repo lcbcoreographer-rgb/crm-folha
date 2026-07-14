@@ -39,12 +39,3 @@ export const CLASSIFICACAO_DOT_CLASSES: Record<Classificacao, string> = {
   morno: "bg-amber-500",
   quente: "bg-red-500",
 };
-
-export const MOTIVOS_PERDA = [
-  "Preço",
-  "Concorrência",
-  "Cliente desistiu",
-  "Projeto cancelado",
-  "Sem retorno",
-  "Outro",
-];

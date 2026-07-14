@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSupabaseAdmin } from "@/app/lib/supabase";
+import { getCurrentUser } from "@/app/lib/currentUser";
 
 export async function GET(
   _request: Request,
@@ -32,10 +33,11 @@ export async function POST(
     return NextResponse.json({ error: "Nota vazia" }, { status: 400 });
   }
 
+  const currentUser = await getCurrentUser();
   const supabase = getSupabaseAdmin();
   const { data, error } = await supabase
     .from("lead_events")
-    .insert({ lead_id: id, tipo: "observacao", nota: nota.trim() })
+    .insert({ lead_id: id, tipo: "observacao", nota: nota.trim(), usuario: currentUser?.nome ?? null })
     .select("*")
     .single();
 

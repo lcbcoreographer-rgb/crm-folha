@@ -12,7 +12,7 @@ import {
 } from "@dnd-kit/core";
 import { Loader2 } from "lucide-react";
 import type { Lead, LeadStatus } from "@/app/lib/leadTypes";
-import { STATUS_ORDER, STATUS_LABELS, MOTIVOS_PERDA } from "@/app/lib/leadStatus";
+import { STATUS_ORDER, STATUS_LABELS } from "@/app/lib/leadStatus";
 import LeadCard from "./LeadCard";
 import FilterBar, { EMPTY_FILTERS, type LeadFilters } from "./FilterBar";
 import LeadDrawer from "./LeadDrawer";
@@ -58,7 +58,13 @@ interface PendingMove {
   status: "perdido" | "fechado_ganho";
 }
 
-export default function KanbanBoard({ initialLeads }: { initialLeads: Lead[] }) {
+export default function KanbanBoard({
+  initialLeads,
+  motivosPerda,
+}: {
+  initialLeads: Lead[];
+  motivosPerda: string[];
+}) {
   const [leads, setLeads] = useState(initialLeads);
   const [filters, setFilters] = useState<LeadFilters>(EMPTY_FILTERS);
   const [activeLead, setActiveLead] = useState<Lead | null>(null);
@@ -207,7 +213,7 @@ export default function KanbanBoard({ initialLeads }: { initialLeads: Lead[] }) 
                   onChange={(e) => setMotivoPerda(e.target.value)}
                 >
                   <option value="">Selecione</option>
-                  {MOTIVOS_PERDA.map((m) => (
+                  {motivosPerda.map((m) => (
                     <option key={m} value={m}>{m}</option>
                   ))}
                 </select>
