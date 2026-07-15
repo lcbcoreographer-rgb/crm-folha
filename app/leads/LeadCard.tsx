@@ -33,7 +33,7 @@ export default function LeadCard({
       {...listeners}
       {...attributes}
       onClick={onClick}
-      className={`cursor-pointer rounded-xl border p-3.5 text-left shadow-sm transition-all hover:shadow-md ${
+      className={`cursor-pointer rounded-xl border p-3.5 text-left shadow-sm backdrop-blur-md transition-all hover:shadow-md ${
         isDragging
           ? "border-dashed border-forest-700/50 bg-paper-dim/50 opacity-50 shadow-none"
           : `${CLASSIFICACAO_CARD_CLASSES[lead.classificacao]}`

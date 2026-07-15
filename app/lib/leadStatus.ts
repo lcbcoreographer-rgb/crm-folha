@@ -41,7 +41,7 @@ export const CLASSIFICACAO_DOT_CLASSES: Record<Classificacao, string> = {
 };
 
 export const CLASSIFICACAO_CARD_CLASSES: Record<Classificacao, string> = {
-  frio: "bg-blue-50/60 border-blue-200",
-  morno: "bg-yellow-50/60 border-yellow-200",
-  quente: "bg-red-50/60 border-red-200",
+  frio: "bg-blue-200/40 border-blue-400/60",
+  morno: "bg-yellow-200/40 border-yellow-400/60",
+  quente: "bg-red-200/40 border-red-400/60",
 };
