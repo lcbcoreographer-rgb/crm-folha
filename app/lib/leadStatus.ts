@@ -29,13 +29,19 @@ export const CLASSIFICACAO_LABELS: Record<Classificacao, string> = {
 };
 
 export const CLASSIFICACAO_BADGE_CLASSES: Record<Classificacao, string> = {
-  frio: "bg-gray-200 text-gray-600",
-  morno: "bg-amber-100 text-amber-700",
+  frio: "bg-blue-100 text-blue-700",
+  morno: "bg-yellow-100 text-yellow-700",
   quente: "bg-red-100 text-red-700",
 };
 
 export const CLASSIFICACAO_DOT_CLASSES: Record<Classificacao, string> = {
-  frio: "bg-gray-400",
-  morno: "bg-amber-500",
+  frio: "bg-blue-500",
+  morno: "bg-yellow-500",
   quente: "bg-red-500",
+};
+
+export const CLASSIFICACAO_CARD_CLASSES: Record<Classificacao, string> = {
+  frio: "bg-blue-50/60 border-blue-200",
+  morno: "bg-yellow-50/60 border-yellow-200",
+  quente: "bg-red-50/60 border-red-200",
 };

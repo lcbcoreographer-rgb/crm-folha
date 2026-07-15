@@ -174,7 +174,7 @@ export default function KanbanBoard({
         </div>
         <DragOverlay>
           {activeLead && (
-            <div className="w-72 rotate-2 opacity-95">
+            <div className="w-72 rotate-2 scale-105 shadow-2xl ring-2 ring-forest-700/40">
               <LeadCard lead={activeLead} onClick={() => {}} />
             </div>
           )}

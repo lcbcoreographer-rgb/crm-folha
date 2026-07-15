@@ -3,6 +3,7 @@ import { useDraggable } from "@dnd-kit/core";
 import type { Lead } from "@/app/lib/leadTypes";
 import {
   CLASSIFICACAO_BADGE_CLASSES,
+  CLASSIFICACAO_CARD_CLASSES,
   CLASSIFICACAO_LABELS,
 } from "@/app/lib/leadStatus";
 
@@ -32,8 +33,10 @@ export default function LeadCard({
       {...listeners}
       {...attributes}
       onClick={onClick}
-      className={`cursor-pointer rounded-xl border border-forest-900/10 bg-white p-3.5 text-left shadow-sm transition-shadow hover:shadow-md ${
-        isDragging ? "opacity-40" : ""
+      className={`cursor-pointer rounded-xl border p-3.5 text-left shadow-sm transition-all hover:shadow-md ${
+        isDragging
+          ? "border-dashed border-forest-700/50 bg-paper-dim/50 opacity-50 shadow-none"
+          : `${CLASSIFICACAO_CARD_CLASSES[lead.classificacao]}`
       }`}
     >
       <div className="flex items-start justify-between gap-2">
